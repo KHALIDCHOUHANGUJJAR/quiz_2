@@ -1,0 +1,117 @@
+body{
+    width: 100%;
+    height: 100%;
+    /* background: rgb(46,39,0); */
+  /* background: linear-gradient(90deg,rgba(46,39,0,1) 100%, rgba(216, 37, 132, 0.846) 100%,  rgb(18, 98, 155) 50%, ); */
+  }
+  .header{
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    width: 30vw;
+  
+  }
+  .RW{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  
+  }
+  .RW_2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  margin-top: 50px;
+  }
+  .col_1{
+    width: 30vw;
+    color: #fdca26;
+    background-color: #F0F8FF;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 70vh;
+    border-radius: 5px;
+  }
+  .col_1 form{
+    width: 25vw;
+    margin-left: 3vw;
+    height: 50vh;
+  }
+  .h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px; 
+  }
+  .h2 h1{
+    color: #fdca26;
+  }
+  
+  .col_b{
+    width: 30vw;
+    color: #fdca26;
+    background-color: #F0F8FF;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 60vh;
+    border-radius: 5px;
+    background: linear-gradient(90deg,rgb(161, 145, 50) 100%, rgba(216, 37, 132, 0.846) 100%,  rgb(18, 98, 155) 50%, );
+  
+  }
+  .col_b form{
+    width: 25vw;
+    margin-left: 2vw;
+  
+  }
+  
+  .loader {
+      width: 30px;
+      background: radial-gradient(circle closest-side, #edeaea 90%, #eeeaea00) 0/calc(100%/3) 100% space;
+      clip-path: inset(0 100% 0 0);
+      animation: l1 1s steps(4) infinite;
+  }
+  
+  @keyframes l1 {
+      to {
+          clip-path: inset(0 -34% 0 0)
+      }
+  }
+  
+  .btn {
+   background-color: #fdca26;
+    display: flex;
+      align-items: center;
+  cursor: pointer;
+    }
+
+  
+  /* responsiveness  */
+  @media  (max-width: 450px) {
+    .col_1{
+      width: 54vw;
+      height: 53vh;
+      margin-left: -5vw;
+      margin-top: 5vh;
+    
+    }
+    .img_112{
+   margin-top: 20vh;
+      width: 35vw;
+      height: 36vh;
+    }
+    .col_1 form {
+      width: 25vw;
+      margin-left: 7vw;
+      height: 50vh;
+  }
+  #gr112{
+    margin-top: -154px;
+    width: 50w;
+  }
+  .col_b{
+    width: 85vw;
+    height: 40vh;
+  }
+  .col_b form {
+    width: 58vw;
+    margin-left: 16vw;
+  }
+  }
