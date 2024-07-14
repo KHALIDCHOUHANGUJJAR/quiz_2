@@ -1,8 +1,7 @@
 let formFeild = document.querySelectorAll("form input");
 const [userName, userEmail, userPassword,userPic] = formFeild;
 
-console.log(userEmail, userName, userPassword,userPic);
- 
+let mulArr = JSON.parse(localStorage.getItem('uerData')) || [];
 let imgUrl;
 // user signUp
 const signup = () => {
@@ -12,13 +11,14 @@ const signup = () => {
     userEmail.value !== "" &&
     userPassword.value !== ""
   ) {
-    let obj = {
+    let dataObj = {
       signUpEmail: userEmail.value,
       signupPassword: userPassword.value,
       user: userName.value,
       userProfile: imgUrl,
     };
-    localStorage.setItem("userData", JSON.stringify(obj));
+    mulArr.push(dataObj)
+    localStorage.setItem("userData", JSON.stringify(mulArr));
     window.location.href = "../signIn/index.html";
   } else {
     alert("bhai data to dal do ");
@@ -31,7 +31,7 @@ const signup = () => {
 
 const uploadImage = () => {
   let img = userPic.files[0];
-  console.log(userPic, img);
+  
   let fileRead = new FileReader();
   
   fileRead.onload = () => {
