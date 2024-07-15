@@ -1,27 +1,53 @@
 let formFeild = document.querySelectorAll("form input");
 const [userName, userEmail, userPassword,userPic] = formFeild;
 
-let mulArr = JSON.parse(localStorage.getItem('uerData')) || [];
+ 
 let imgUrl;
+let ArrayData = JSON.parse(localStorage.getItem('userData')) || [];
+
+
+const logAlready=()=>{
+  let loged = ArrayData.find((item)=>{
+    return item.islogin === true;
+  })
+console.log(loged);
+  if (loged) {
+    window.location.href = "../dashboard/index.html"
+  }
+}
+logAlready();
+
+
+
 // user signUp
 const signup = () => {
   event.preventDefault();
-  if (
-    userName.value !== "" &&
-    userEmail.value !== "" &&
-    userPassword.value !== ""
-  ) {
-    let dataObj = {
+
+  if ( userName.value !== "" &&   userEmail.value !== "" &&   userPassword.value !== "") {
+let alreadyAcc = ArrayData.find((item)=>{
+  return item.signUpEmail === userEmail.value;
+})
+
+if (alreadyAcc) {
+  alert('Sorry Account has already exists')
+
+}else{
+   let dataObj = {
       signUpEmail: userEmail.value,
       signupPassword: userPassword.value,
       user: userName.value,
       userProfile: imgUrl,
+      islogin: false,
     };
-    mulArr.push(dataObj)
-    localStorage.setItem("userData", JSON.stringify(mulArr));
+    ArrayData.push(dataObj)
+    localStorage.setItem("userData", JSON.stringify(ArrayData));
     window.location.href = "../signIn/index.html";
+ 
+}
+
+
   } else {
-    alert("bhai data to dal do ");
+    alert("REQUIRED DATA ");
   }
 };
 
@@ -31,7 +57,7 @@ const signup = () => {
 
 const uploadImage = () => {
   let img = userPic.files[0];
-  
+  console.log(userPic, img);
   let fileRead = new FileReader();
   
   fileRead.onload = () => {
