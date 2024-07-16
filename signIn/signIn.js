@@ -2,73 +2,44 @@ let formFeild = document.querySelectorAll("form input");
 const [loginEmail, loginPassword] = formFeild;
 
 const data = JSON.parse(localStorage.getItem("userData"));
-let loader =document.getElementById('loader')
+let loader = document.getElementById("loader");
 
 
-
-
-let logedAlr =()=>{
- let isloged = data.find((item) =>{
-  return item.islogin === true;
- })
-  
+let logedAlr = () => {
+  let isloged = data.find((item) => {
+    return item.islogin === true;
+  });
+  if (isloged) {
+    window.location.href = "../signUp/index.html"
+  }
 }
 
 logedAlr();
 
-
-
-const login = ()=>{
+const login = () => {
   event.preventDefault();
-  const {signUpEmail, signupPassword} = data;
+  const { signUpEmail, signupPassword } = data;
 
-
-    let findLogin = data.find((item) => {
-        return item.signUpEmail === loginEmail.value;
-    })
-    if (findLogin) {
-        findLogin.isLogin = true;
-        localStorage.setItem("userData", JSON.stringify(data));
-        if (findLogin.signUpEmail === "admin@admin.com") {
-            loader.classList.add('loader');
-            setTimeout(() => {
-                window.location.href = '../dashboard/index.html'
-                loader.classList.remove('loader');
-            }, 2000)
-        }
-        else if (findLogin.signUpEmail === loginEmail.value) {
-            loader.classList.add('loader');
-            setTimeout(() => {
-                window.location.href = '../dashboard/index.html'
-                loader.classList.remove('loader');
-            }, 2000)
-        }
-      }else {
-        alert("Invalid crendtils...")
+  let findLogin = data.find((item) => {
+    return item.signUpEmail === loginEmail.value ;
+  });
+  if (findLogin) {
+    findLogin.isLogin = true;
+    localStorage.setItem("userData", JSON.stringify(data));
+    if (findLogin.signUpEmail === "admin@admin.com") {
+      loader.classList.add("loader");
+      setTimeout(() => {
+        window.location.href = "../admin/index.html";
+        loader.classList.remove("loader");
+      }, 2000);
+    } else if (findLogin.signUpEmail === loginEmail.value) {
+      loader.classList.add("loader");
+      setTimeout(() => {
+        window.location.href = "../dashboard/index.html";
+        loader.classList.remove("loader");
+      }, 2000);
     }
-
-  
-
-}
-
-
-
-
-
-// const login = () => {
-//   event.preventDefault();
-//   const { signUpEmail, signupPassword } = data;
-//   if (
-//    ( signUpEmail === loginEmail.value) &&
-//     signupPassword === loginPassword.value
-//   ) {
-      
-//     loader.classList.add('loader')
-//     setTimeout(()=>{
-// window.location.href="../dashboard/index.html"
-// loader.classList.remove('loader') 
-// },2000)
-//   } else {
-//     alert('Invalid credentils')
-//                  }
-// };
+  } else {
+    alert("No Data Found");
+  }
+};
