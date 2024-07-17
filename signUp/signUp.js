@@ -4,9 +4,9 @@ const [userName, userEmail, userPassword, userPic] = formFeild;
 
 let imgUrl;
 let ArrayData = JSON.parse(localStorage.getItem("userData")) || [];
-console.log(ArrayData);
+
 function logAlr (){
-  let loged = ArrayData.find((item)=>{
+  let loged = ArrayData.find((item)=>{  
     return item.islogin === true;
   }) 
 if (loged) {
@@ -21,9 +21,11 @@ const signup = () => {
   if (
     userName.value !== "" &&
     userEmail.value !== "" &&
-    userPassword.value !== ""
+    userPassword.value !== ""&&
+    userPic.value !== ""
   ) {
     let alreadyAcc = ArrayData.find((item) => {
+  
       return item.signUpEmail === userEmail.value;
     });
 
@@ -35,7 +37,7 @@ const signup = () => {
         signupPassword: userPassword.value,
         user: userName.value,
         userProfile: imgUrl,
-        islogin: false,
+        isLogin: false,
       };
       ArrayData.push(dataObj);
       localStorage.setItem("userData", JSON.stringify(ArrayData));
@@ -45,14 +47,19 @@ const signup = () => {
     alert("REQUIRED DATA ");
   }
 };
+
+
 // User image
+
 const uploadImage = () => {
   let img = userPic.files[0];
-  console.log(userPic, img);
+
   let fileRead = new FileReader();
 
   fileRead.onload = () => {
     imgUrl = fileRead.result;
   };
   fileRead.readAsDataURL(img);
+ 
+
 };
